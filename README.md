@@ -14,10 +14,12 @@ git clone https://github.com/vfreex/docker-cowrie.git
 cd docker-cowrie
 
 # edit config/cowrie-config/conrie.cfg if necessary
+# edit docker-compose.yml to change the port number you want to map
 
 # run (suppose you have Docker installed)
 docker-compose up
-
+# run in the backgroud
+# docker-compose up -d
 ```
 
 [Cowrie]: https://github.com/micheloosterhof/cowrie

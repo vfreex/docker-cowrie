@@ -4,6 +4,8 @@ services:
         image: local/cowrie
         build: cowrie
         user: cowrie
+        ports:
+            - "22:2222/tcp"
         volumes:
             - ./config/cowrie-config/cowrie.cfg:/opt/cowrie/cowrie-master/cowrie.cfg:Z
             - cowrie-data:/opt/cowrie/cowrie-master/data:Z
