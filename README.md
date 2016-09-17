@@ -22,4 +22,45 @@ docker-compose up
 # docker-compose up -d
 ```
 
+## Inspect Your Cowrie Container
+
+### Display the status of our container
+
+``` bash
+# get container's name and port mapping
+docker-compose ps
+# get container's detailed information
+docker inspect `docker-compose ps -q`
+```
+
+### Inspect log and data files
+
+[Cowrie]'s `data` and `log` directorires are mounted as Docker volumes.
+
+Before inspecting files in those directories,
+you should get the names of those volumes by running `docker volume ls`:
+
+``` bash
+$ docker volume ls
+DRIVER              VOLUME NAME
+local               cowrie_cowrie-log
+local               cowrie_cowrie-data
+```
+
+Then obtain the path of desired volume by `docker volume inspect <volume_name>`:
+
+``` bash
+$ docker volume inspect cowrie_cowrie-log
+[
+    {
+        "Name": "cowrie_cowrie-log",
+        "Driver": "local",
+        "Mountpoint": "/var/lib/docker/volumes/cowrie_cowrie-log/_data"
+    }
+]
+```
+
+The "Mountpoint" above is the physical path of the volume. All files you need are there.
+
+
 [Cowrie]: https://github.com/micheloosterhof/cowrie
