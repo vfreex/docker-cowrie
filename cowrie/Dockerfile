@@ -12,6 +12,7 @@ RUN apk add --no-cache openssl python py-pip py-twisted py-cryptography \
     wget -O /tmp/cowrie-master.zip https://github.com/micheloosterhof/cowrie/archive/master.zip && \
     mkdir -p /opt/cowrie && \
     unzip -d /opt/cowrie /tmp/cowrie-master.zip && \
+    rm /tmp/cowrie-master.zip && \
     chown -R cowrie: /opt/cowrie && \
     cd /opt/cowrie/cowrie-master && \
     cp -a cowrie.cfg.dist cowrie.cfg
