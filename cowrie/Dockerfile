@@ -5,7 +5,7 @@ WORKDIR /opt/cowrie/cowrie-master
 EXPOSE 2222
 CMD ["twistd", "-n", "-l", "log/cowrie.log", "--umask", "0077", "cowrie"]
 
-RUN apk add --no-cache openssl python py-pip py-twisted py-cryptography \
+RUN apk add --no-cache ca-certificates wget python py-pip py-twisted py-cryptography \
         py-openssl py-enum34 py-six py-asn1 py-ipaddress py-cffi py-idna && \
     pip install service_identity && \
     adduser -D cowrie && \
@@ -15,5 +15,6 @@ RUN apk add --no-cache openssl python py-pip py-twisted py-cryptography \
     rm /tmp/cowrie-master.zip && \
     chown -R cowrie: /opt/cowrie && \
     cd /opt/cowrie/cowrie-master && \
-    cp -a cowrie.cfg.dist cowrie.cfg
+    cp -a cowrie.cfg.dist cowrie.cfg && \
+    apk del ca-certificates wget
 
