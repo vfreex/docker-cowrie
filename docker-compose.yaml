@@ -1,0 +1,13 @@
+version: "2"
+services:
+    cowrie:
+        image: local/cowrie
+        build: cowrie
+        user: cowrie
+        volumes:
+            - ./config/cowrie-config/cowrie.cfg:/opt/cowrie/cowrie-master/cowrie.cfg:Z
+            - cowrie-data:/opt/cowrie/cowrie-master/data:Z
+            - cowrie-log:/opt/cowrie/cowrie-master/log:Z
+volumes:
+    cowrie-data:
+    cowrie-log:
