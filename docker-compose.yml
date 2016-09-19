@@ -1,7 +1,7 @@
 version: "2"
 services:
     cowrie:
-        image: local/cowrie
+        image: rayson/cowrie
         build: cowrie
         user: cowrie
         ports:
