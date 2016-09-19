@@ -1,12 +1,14 @@
 #docker-cowrie
 
 Dockerfile and docker-compose file to run [Cowrie][] in Docker.
-[Cowrie][] is a medium interaction SSH and Telnet honeypot designed to log brute force attacks and the shell interaction performed by the attacker.
+[Cowrie][] is a medium interaction SSH and Telnet honeypot designed
+to log brute force attacks and the shell interaction performed by the attacker.
 
 ## Usage
 
 Suppose you have Docker Engine and Docker Compose installed.
-If not, see <https://docs.docker.com/engine/installation/> and <https://docs.docker.com/compose/install/>.
+If not, see <https://docs.docker.com/engine/installation/>
+and <https://docs.docker.com/compose/install/>.
 
 ``` bash
 # clone this repo
@@ -60,7 +62,27 @@ $ docker volume inspect cowrie_cowrie-log
 ]
 ```
 
-The "Mountpoint" above is the physical path of the volume. All files you need are there.
+The "Mountpoint" above is the physical path of the volume.
+All files you need are there.
 
+## Troubleshoot
+
+### Error occurs when executing `docker-compose`:
+
+```
+ERROR: In file './docker-compose.yml' service 'version' doesn't have any configuration options. All top level keys in your docker-compose.yml must map to a dictionary of configuration options.
+```
+_Solution_ 
+
+Upgrade your docker-compose to 1.6.0+:
+
+``` sh
+# Make sure you have pip installed. If not, please install pip:
+# apt install python-pip # Debian/Ubuntu
+# dnf install python-pip # Fedora
+# yum install python-pip # RHEL/CentOS with EPEL
+
+$ pip install -U docker-compose
+```
 
 [Cowrie]: https://github.com/micheloosterhof/cowrie
